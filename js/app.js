@@ -9,6 +9,10 @@
 	// Find your WOEID code at http://zourbuth.com/tools/woeid/
 	var woeid = 26821877;
 	
+
+	var darksky_id = '749a6ae7c947794affee7a9408a89b03';
+	var accuweather_id = 'PQ50CT1melGWDC45CBxrXvDmV3mxtDJS';
+
 	// Your temperature unit measurement
 	// 'c' for Celcius, and 'f' for Fahrenheit
 	var tempunit = 'c';
@@ -32,6 +36,23 @@
 		var temp = $('#current .temp');
 
 		if (icon.length)
+			icon.html(icons[current.code]); //siffra per condition
+
+		if (desc.length)
+			desc.html(current.text); //beskrivning
+
+		if (temp.length)
+			temp.html(current.temp);
+	}
+
+
+
+	function populateCurrent2(current) {
+		var icon = $('#current .icon');
+		var desc = $('#current .desc');
+		var temp = $('#current .temp');
+
+		if (icon.length)
 			icon.html(icons[current.code]);
 
 		if (desc.length)
@@ -40,7 +61,6 @@
 		if (temp.length)
 			temp.html(current.temp);
 	}
-
 	function populateForecast(day, forecast) {
 		var forecastElem = '#forecast' + day + ' ';
 		var day = $(forecastElem + '.day');
@@ -76,6 +96,27 @@
 			dataType: 'json'
 		}).done(function (result) {
 			result = result.query.results.channel.item;
+
+
+			populateCurrent(result.condition);
+			populateForecast(1, result.forecast[0]);
+			populateForecast(2, result.forecast[1]);
+			populateForecast(3, result.forecast[2]);
+			populateForecast(4, result.forecast[3]);
+			populateForecast(5, result.forecast[4]);
+		});
+	}
+
+
+
+	function queryWeather2() {
+		$.ajax({
+			type: 'GET',
+			url: 'https://api.darksky.net/forecast/749a6ae7c947794affee7a9408a89b03/52.510768,13.459088?units=auto',
+			dataType: 'json'
+		}).done(function (result) {
+			current = result.currently;
+			hourly = result.hourly;
 
 			populateCurrent(result.condition);
 			populateForecast(1, result.forecast[0]);
