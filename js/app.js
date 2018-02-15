@@ -7,8 +7,8 @@
 
 	var accuweather_id = 'PQ50CT1melGWDC45CBxrXvDmV3mxtDJS';
 
-	// Yahoo! query interval (milliseconds)
-	var waitBetweenWeatherQueries = 900000;
+	// Weather query interval (milliseconds)
+	var waitBetweenWeatherQueries = 1800000; //30min
 
 	// Default zoom level. Transitions from 0.9 to 1.1 (90% to 110%)
 	var zoom = 1.0;
