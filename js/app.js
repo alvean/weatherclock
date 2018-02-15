@@ -37,7 +37,7 @@
 		var result = JSON.parse(jsonresult);
 
 		var current = result[0];
-		var forecast = result[6];
+		var forecast = result[5];
 
 		populate2(current, "current");
 		populate2(forecast, "forecast");
