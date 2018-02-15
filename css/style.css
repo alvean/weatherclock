@@ -37,48 +37,17 @@ body {
 	100% { background-color: midnightblue; }
 }
 
-.forecast {
-	width: 20%;
-}
-
-#forecast1 {
-	color: #fff;
-}
-
-#forecast2 {
-	color: #ddd;
-}
-
-#forecast3 {
-	color: #bbb;
-}
-
-#forecast4 {
-	color: #999;
-}
-
-#forecast5 {
-	color: #777;
-}
-
 .wi {
-	font-size: 14vmin;
-	line-height: 19vmin !important;
+	font-size: 20vmin;
+}
+
+#timedate {
+	height: 150%;
 }
 
 #current {
 	height: 100%;
-	padding-top: 4vh;
-}
-
-#current .wi {
-	font-size: 18vmin;
-}
-
-#forecast {
-	font-size: 15vmin;
-	margin-bottom: 4vmin;
-}
+} 
 
 .day {
 	font-size: 3.5vmin;
@@ -86,17 +55,9 @@ body {
 }
 
 .desc {
-	font-size: 3.5vmin;
-	margin-top: 2.5vmin;
+	font-size: 5vmin;
+	margin-top: 6vmin;
 	margin-bottom: 0.5vmin;
-}
-
-.highTemp {
-	font-size: 3vmin;
-}
-
-.lowTemp {
-	font-size: 3vmin;
 }
 
 .currentTemp {
@@ -107,25 +68,16 @@ body {
 	font-size: 15vmin;
 }
 
-#current .desc {
-	font-size: 8vmin;
-	margin-bottom: 0.5vmin;
-}
-
-#current .tvminp {
+.tvminp {
 	font-size: 2.5vmin;
 }
 
+
 #time {
-	font-size: 15vmin;
+	font-size: 26vmin;
 }
 
 #date {
 	font-size: 6vmin;
 	color: #ccc;
-}
-
-#btcprice {
-	font-size: 9vmin;
-	color: #eee;
 }

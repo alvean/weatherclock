@@ -5,23 +5,10 @@
 	 * BEGIN CONFIG VARIABLES
 	 */
 
-	// Yahoo WOEID code
-	// Find your WOEID code at http://zourbuth.com/tools/woeid/
-	var woeid = 26821877;
-	
-
-	var darksky_id = '749a6ae7c947794affee7a9408a89b03';
 	var accuweather_id = 'PQ50CT1melGWDC45CBxrXvDmV3mxtDJS';
-
-	// Your temperature unit measurement
-	// 'c' for Celcius, and 'f' for Fahrenheit
-	var tempunit = 'c';
 
 	// Yahoo! query interval (milliseconds)
 	var waitBetweenWeatherQueries = 900000;
-
-	// Bitcoin price query interval (milliseconds)
-	//var waitBetweenBitcoinPriceQueries = 300000;
 
 	// Default zoom level. Transitions from 0.9 to 1.1 (90% to 110%)
 	var zoom = 1.0;
@@ -30,102 +17,50 @@
 	 * END CONFIG VARIABLES
 	 */
 
-	function populateCurrent(current) {
-		var icon = $('#current .icon');
-		var desc = $('#current .desc');
-		var temp = $('#current .temp');
-
-		if (icon.length)
-			icon.html(icons[current.code]); //siffra per condition
-
-		if (desc.length)
-			desc.html(current.text); //beskrivning
-
-		if (temp.length)
-			temp.html(current.temp);
-	}
-
-
-
-	function populateCurrent2(current) {
-		var icon = $('#current .icon');
-		var desc = $('#current .desc');
-		var temp = $('#current .temp');
-
-		if (icon.length)
-			icon.html(icons[current.code]);
-
-		if (desc.length)
-			desc.html(current.text);
-
-		if (temp.length)
-			temp.html(current.temp);
-	}
-	function populateForecast(day, forecast) {
-		var forecastElem = '#forecast' + day + ' ';
-		var day = $(forecastElem + '.day');
-		var icon = $(forecastElem + '.icon');
-		var desc = $(forecastElem + '.desc');
-		var high = $(forecastElem + '.high');
-		var low = $(forecastElem + '.low');
-
-		if (day.length) {
-			if (day === 1)
-				day.html('Today');
-			else
-				day.html(forecast.day);
-		}
-
-		if (icon.length)
-			icon.html(icons[forecast.code]);
-
-		if (desc.length)
-			desc.html(forecast.text);
-
-		if (high.length)
-			high.html(forecast.high);
-
-		if (low.length)
-			low.html(forecast.low);
-	}
-
-	function queryWeather() {
-		$.ajax({
-			type: 'GET',
-			url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D' + woeid + '%20and%20u=%27'+ tempunit +'%27%20&format=json',
-			dataType: 'json'
-		}).done(function (result) {
-			result = result.query.results.channel.item;
-
-
-			populateCurrent(result.condition);
-			populateForecast(1, result.forecast[0]);
-			populateForecast(2, result.forecast[1]);
-			populateForecast(3, result.forecast[2]);
-			populateForecast(4, result.forecast[3]);
-			populateForecast(5, result.forecast[4]);
-		});
-	}
-
-
-
 	function queryWeather2() {
 		$.ajax({
 			type: 'GET',
-			url: 'https://api.darksky.net/forecast/749a6ae7c947794affee7a9408a89b03/52.510768,13.459088?units=auto',
+			url: 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/167747?apikey=PQ50CT1melGWDC45CBxrXvDmV3mxtDJS&metric=true',
 			dataType: 'json'
 		}).done(function (result) {
-			current = result.currently;
-			hourly = result.hourly;
+			var current = result[0];
+			var forecast = result[6];
 
-			populateCurrent(result.condition);
-			populateForecast(1, result.forecast[0]);
-			populateForecast(2, result.forecast[1]);
-			populateForecast(3, result.forecast[2]);
-			populateForecast(4, result.forecast[3]);
-			populateForecast(5, result.forecast[4]);
+			populate2(current);
+			populate2(forecast);
 		});
 	}
+
+
+	function dummyQueryWeather() {
+		var jsonresult = '[{"DateTime":"2018-02-15T21:00:00+01:00","EpochDateTime":1518724800,"WeatherIcon":7,"IconPhrase":"Cloudy","IsDaylight":false,"Temperature":{"Value":1.1,"Unit":"C","UnitType":17},"PrecipitationProbability":47,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=1&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=1&hbhhour=21&unit=c&lang=en-us"},{"DateTime":"2018-02-15T22:00:00+01:00","EpochDateTime":1518728400,"WeatherIcon":7,"IconPhrase":"Cloudy","IsDaylight":false,"Temperature":{"Value":0.6,"Unit":"C","UnitType":17},"PrecipitationProbability":44,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=1&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=1&hbhhour=22&unit=c&lang=en-us"},{"DateTime":"2018-02-15T23:00:00+01:00","EpochDateTime":1518732000,"WeatherIcon":7,"IconPhrase":"Cloudy","IsDaylight":false,"Temperature":{"Value":1.1,"Unit":"C","UnitType":17},"PrecipitationProbability":48,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=1&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=1&hbhhour=23&unit=c&lang=en-us"},{"DateTime":"2018-02-16T00:00:00+01:00","EpochDateTime":1518735600,"WeatherIcon":18,"IconPhrase":"Rain","IsDaylight":false,"Temperature":{"Value":1.6,"Unit":"C","UnitType":17},"PrecipitationProbability":51,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=0&unit=c&lang=en-us"},{"DateTime":"2018-02-16T01:00:00+01:00","EpochDateTime":1518739200,"WeatherIcon":7,"IconPhrase":"Cloudy","IsDaylight":false,"Temperature":{"Value":1.8,"Unit":"C","UnitType":17},"PrecipitationProbability":25,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=1&unit=c&lang=en-us"},{"DateTime":"2018-02-16T02:00:00+01:00","EpochDateTime":1518742800,"WeatherIcon":38,"IconPhrase":"Mostly cloudy","IsDaylight":false,"Temperature":{"Value":2.3,"Unit":"C","UnitType":17},"PrecipitationProbability":20,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=2&unit=c&lang=en-us"},{"DateTime":"2018-02-16T03:00:00+01:00","EpochDateTime":1518746400,"WeatherIcon":36,"IconPhrase":"Intermittent clouds","IsDaylight":false,"Temperature":{"Value":2.4,"Unit":"C","UnitType":17},"PrecipitationProbability":20,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=3&unit=c&lang=en-us"},{"DateTime":"2018-02-16T04:00:00+01:00","EpochDateTime":1518750000,"WeatherIcon":36,"IconPhrase":"Intermittent clouds","IsDaylight":false,"Temperature":{"Value":2.5,"Unit":"C","UnitType":17},"PrecipitationProbability":20,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=4&unit=c&lang=en-us"},{"DateTime":"2018-02-16T05:00:00+01:00","EpochDateTime":1518753600,"WeatherIcon":35,"IconPhrase":"Partly cloudy","IsDaylight":false,"Temperature":{"Value":1.8,"Unit":"C","UnitType":17},"PrecipitationProbability":20,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=5&unit=c&lang=en-us"},{"DateTime":"2018-02-16T06:00:00+01:00","EpochDateTime":1518757200,"WeatherIcon":35,"IconPhrase":"Partly cloudy","IsDaylight":false,"Temperature":{"Value":2.1,"Unit":"C","UnitType":17},"PrecipitationProbability":13,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=6&unit=c&lang=en-us"},{"DateTime":"2018-02-16T07:00:00+01:00","EpochDateTime":1518760800,"WeatherIcon":33,"IconPhrase":"Clear","IsDaylight":false,"Temperature":{"Value":1.8,"Unit":"C","UnitType":17},"PrecipitationProbability":0,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=7&unit=c&lang=en-us"},{"DateTime":"2018-02-16T08:00:00+01:00","EpochDateTime":1518764400,"WeatherIcon":1,"IconPhrase":"Sunny","IsDaylight":true,"Temperature":{"Value":1.8,"Unit":"C","UnitType":17},"PrecipitationProbability":0,"MobileLink":"http://m.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&unit=c&lang=en-us","Link":"http://www.accuweather.com/en/de/friedrichshain/10243/hourly-weather-forecast/167747?day=2&hbhhour=8&unit=c&lang=en-us"}]';
+		var result = JSON.parse(jsonresult);
+
+		var current = result[0];
+		var forecast = result[6];
+
+		populate2(current, "current");
+		populate2(forecast, "forecast");
+	}
+
+
+	function populate2(current, div) {
+		var icon = $('#' + div + ' .icon');
+		var desc = $('#' + div + ' .desc');
+		var temp = $('#' + div + ' .temp');
+
+
+		if (icon.length)
+			icon.html(icons[current.WeatherIcon]);
+
+		if (desc.length)
+			desc.html(current.IconPhrase);
+
+		if (temp.length)
+			temp.html(current.Temperature.Value);
+	}
+
+
 
 	$(window).load(function() {
 
@@ -135,7 +70,8 @@
 		if ($('#date').length)
 			$('#date').html(moment().format('dddd, MMM Do'));
 
-		queryWeather();
+		//queryWeather2();
+		dummyQueryWeather();
 
 		setInterval(function() {
 			if ($('#time').length)
@@ -146,7 +82,8 @@
 		}, 1000);
 
 		setInterval(function() {
-			queryWeather();
+			//queryWeather2();
+			dummyQueryWeather();
 		}, waitBetweenWeatherQueries);
 
 		setInterval(function() {
