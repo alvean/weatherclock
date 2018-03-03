@@ -24,41 +24,18 @@ body {
 	100% { background-color: midnightblue; }
 }
 
-#display {
+#clock {
 	position: fixed;
-	width: 100%;
-	height: 100%;
 	text-align: center;
+	width: 100%;
 }
 
-.wi {
-	font-size: 20vmin;
+#weather {
+	position: fixed;
+	text-align: center;
+	margin-top: 15vmin;
+	width: 100%;
 }
-
-
-
-.day {
-	font-size: 3.5vmin;
-	margin-bottom: 1.5vmin;
-}
-
-.desc {
-	font-size: 5vmin;
-	margin-bottom: 0.5vmin;
-}
-
-.currentTemp {
-	font-size: 3.5vmin;
-}
-
-.temp {
-	font-size: 15vmin;
-}
-
-.tvminp {
-	font-size: 2.5vmin;
-}
-
 
 #time {
 	font-size: 75vmin;
@@ -68,4 +45,32 @@ body {
 #date {
 	font-size: 20vmin;
 	color: #ccc;
+}
+
+#current {
+	display: inline-block;
+}
+
+#forecast {
+	margin-left: 10vmin;
+	display: inline-block;
+}
+
+.wi {
+	font-size: 45vmin;
+}
+
+.desc {
+	font-size: 10vmin;
+	margin-bottom: 0.5vmin;
+}
+
+.celsius {
+	font-size: 5vmin;
+
+}
+
+.temp {
+	font-size: 23vmin;
+	vertical-align: top;
 }

@@ -22,13 +22,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script> 
 		$(document).ready(function(){
-			$("div#clock").hide();
-			// $("div#weather").hide();
+			//$("div#clock").hide();
+			$("div#weather").hide();
 
-			// setInterval(function() {
-			// 	 $("div#clock").fadeToggle();
-		 //         $("div#weather").fadeToggle();
-			// }, 15000);
+			setInterval(function() {
+				 $("div#clock").fadeToggle();
+		         $("div#weather").fadeToggle();
+			}, 5000);
 		   
 		});
 		</script> 
@@ -41,22 +41,17 @@
 		</div>
 
 		<div id="weather">
-			<table id="display" border="0">
-				<tbody>
-					<tr>
-						<td id="current">
-							<div class="icon"></div>
-							<div class="desc"></div>
-							<div class="currentTemp"><span class="temp"></span>°C</div>
-						</td>
-						<td id="forecast">
-							<div class="icon"></div>
-							<div class="desc"></div>
-							<div class="currentTemp"><span class="temp"></span>°C</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div id="current">
+				<div class="icon"></div>
+				<div class="desc"></div>
+				<div class="celsius"><span class="temp"></span>°C</div>
+			</div>
+			<div id="forecast">
+				<div class="icon"></div>
+				<div class="desc"></div>
+				<div class="celsius"><span class="temp"></span>°C</div>
+			</div>
+
 		</div>
 
 		<script src="libs/jquery.min.js"></script>
