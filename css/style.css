@@ -14,7 +14,13 @@ body {
 	user-select: none;
 }
 
-#shell {
+#clock {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#weather {
 	position: fixed;
 	width: 100%;
 	height: 100%;

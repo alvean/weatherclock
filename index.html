@@ -19,9 +19,22 @@
  		<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css'> -->
 
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script> 
+		$(document).ready(function(){
+			$("div#weather").hide();
+		    $("button").click(function(){
+		        $("div#clock").toggle();
+		        $("div#weather").toggle();
+		    });
+		});
+		</script> 
+
 	</head>
 	<body>
-		<div id="shell">
+<button>Start Animation</button>
+
+		<div id="clock">
 			<table id="display" border="0">
 				<tbody>
 					<tr>
@@ -30,6 +43,13 @@
 							<div id="date"></div>
 						</td>
 					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="weather">
+			<table id="display" border="0">
+				<tbody>
 					<tr>
 						<td id="current">
 							<div class="icon"></div>
