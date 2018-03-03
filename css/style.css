@@ -10,10 +10,10 @@ body {
 	font-family: 'OSP-DIN', Arial, sans-serif;
 	margin: 0px;
 	padding: 0px;
-	-webkit-animation: random 300s infinite;
+/*	-webkit-animation: random 300s infinite;
 	animation: random 300s infinite;
 	-webkit-user-select: none;
-	user-select: none;
+	user-select: none;*/
 }
 
 @-webkit-keyframes random {
