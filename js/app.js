@@ -83,7 +83,7 @@
 
 			if ($('#date').length)
 				$('#date').html(moment().format('dddd, MMM Do'));
-		}, 1000);
+		}, 10000);
 
 		setInterval(function() {
 			//queryWeather();

@@ -35,13 +35,7 @@ body {
 	font-size: 20vmin;
 }
 
-#timedate {
-	height: 150%;
-}
 
-#current {
-	height: 100%;
-} 
 
 .day {
 	font-size: 3.5vmin;
@@ -68,10 +62,10 @@ body {
 
 #time {
 	font-size: 75vmin;
+	margin-bottom: -15vmin;
 }
 
 #date {
 	font-size: 20vmin;
 	color: #ccc;
-	margin-bottom: 1.5vmin;
 }
