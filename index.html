@@ -23,17 +23,17 @@
 		<script> 
 		$(document).ready(function(){
 			$("div#weather").hide();
-		    $("button").click(function(){
-		        $("div#clock").toggle();
-		        $("div#weather").toggle();
-		    });
+
+			setInterval(function() {
+				$("div#clock").fadeToggle();
+		        $("div#weather").fadeToggle();
+			}, 15000);
+		   
 		});
 		</script> 
 
 	</head>
 	<body>
-<button>Start Animation</button>
-
 		<div id="clock">
 			<table id="display" border="0">
 				<tbody>
