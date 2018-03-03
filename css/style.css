@@ -66,11 +66,11 @@ body {
 }
 
 .celsius {
-	font-size: 5vmin;
+	font-size: 8vmin;
 
 }
 
 .temp {
-	font-size: 23vmin;
+	font-size: 25vmin;
 	vertical-align: top;
 }
