@@ -58,7 +58,7 @@
 			desc.html(current.IconPhrase);
 
 		if (temp.length)
-			temp.html(current.Temperature.Value);
+			temp.html(Math.round(current.Temperature.Value));
 
 		if (feeltemp.length)
 			feeltemp.html(current.RealFeelTemperature.Value);

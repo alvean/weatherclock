@@ -33,7 +33,7 @@ body {
 #weather {
 	position: fixed;
 	text-align: center;
-	margin-top: 15vmin;
+	margin-top: 13vmin;
 	width: 100%;
 }
 
@@ -71,6 +71,6 @@ body {
 }
 
 .temp {
-	font-size: 25vmin;
+	font-size: 28vmin;
 	vertical-align: top;
 }
