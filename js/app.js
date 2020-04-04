@@ -26,8 +26,8 @@
 			var current = result[0];
 			var forecast = result[6];
 
-			populate(current);
-			populate(forecast);
+			populate(current, "current");
+			populate(forecast, "forecast");
 		});
 	}
 
@@ -65,7 +65,6 @@
 	}
 
 
-
 	$(window).load(function() {
 
 		if ($('#time').length)
@@ -74,8 +73,8 @@
 		if ($('#date').length)
 			$('#date').html(moment().format('dddd, MMM Do'));
 
-		//queryWeather();
-		dummyQueryWeather();
+		queryWeather();
+		//dummyQueryWeather();
 
 		setInterval(function() {
 			if ($('#time').length)
@@ -86,8 +85,8 @@
 		}, 10000);
 
 		setInterval(function() {
-			//queryWeather();
-			dummyQueryWeather();
+			queryWeather();
+			//dummyQueryWeather();
 		}, waitBetweenWeatherQueries);
 
 		setInterval(function() {
