@@ -74,8 +74,8 @@
 		if ($('#date').length)
 			$('#date').html(moment().format('dddd, MMM Do'));
 
-		//queryWeather();
-		dummyQueryWeather();
+		queryWeather();
+		//dummyQueryWeather();
 
 		setInterval(function() {
 			if ($('#time').length)
@@ -86,8 +86,8 @@
 		}, 10000);
 
 		setInterval(function() {
-			//queryWeather();
-			dummyQueryWeather();
+			queryWeather();
+			//dummyQueryWeather();
 		}, waitBetweenWeatherQueries);
 
 		setInterval(function() {
