@@ -53,7 +53,7 @@
 
 
 		if (icon.length)
-			icon.html(icons[current.WeatherIcon]);
+			icon.html(icons[current.WeatherIcon-1]);
 
 		if (desc.length)
 			desc.html(current.IconPhrase);
